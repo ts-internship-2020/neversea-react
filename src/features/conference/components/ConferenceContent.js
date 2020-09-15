@@ -6,8 +6,10 @@ import { useTranslation } from 'react-i18next';
 import Typography from 'components/common/inputs/Typography';
 import Button from 'components/common/buttons/Button';
 
+
+
 const ConferenceContent = props => {
-    const { conference } = props;
+    const { conference, onAttend, onWithdraw } = props;
     const { status, startDate, endDate, type, category } = conference;
     const {t} = useTranslation();
 
@@ -32,14 +34,18 @@ const ConferenceContent = props => {
             </Grid>
             <Grid item xs={12}>
                 {showJoin && <Button right size="sm" color="success">{t("Conferences.Join")}</Button>}
-                {showWithdraw && <Button right size="sm" color="danger">{t("Conferences.Withdraw")}</Button>}
-                {showAttend && <Button right size="sm" color="info">{t("Conferences.Attend")}</Button>}
+                {showWithdraw && <Button right size="sm" color="danger"
+                                        onClick={onWithdraw(conference)}>{t("Conferences.Withdraw")}</Button>}
+                {showAttend && <Button right size="sm" color="info"
+                                        onClick={onAttend(conference)}>{t("Conferences.Attend")}</Button>}
             </Grid>
         </Grid>
     )
 }
 
 ConferenceContent.propTypes = {
-    conference: PropTypes.object.isRequired
+    conference: PropTypes.object.isRequired,
+    onAttend: PropTypes.func,
+    onWithdraw: PropTypes.func
 }
 export default ConferenceContent

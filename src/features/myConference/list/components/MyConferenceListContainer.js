@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import MyConferenceFilters from './MyConferenceFilters';
 import LoadingFakeText from 'components/common/fakeText/LoadingFakeText';
 import MyConferenceList from './MyConferenceList';
-import { generateDefaultFilters } from 'utils/functions';
+//import { generateDefaultFilters } from 'utils/functions';
 import { useHeader, useFooter } from 'providers/AreasProvider';
 import { useTranslation } from 'react-i18next';
 import MyConferenceHeader from './MyConferenceHeader';
@@ -21,7 +21,7 @@ const defaultPager = {
 }
 
 const MyConferenceListContainer = () => {
-    const [filters, setFilters] = useState(generateDefaultFilters());
+    const [filters, setFilters] = useState({});
     const [, setHeader] = useHeader();
     const { t } = useTranslation();
     const history = useHistory();

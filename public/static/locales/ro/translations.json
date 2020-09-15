@@ -58,13 +58,16 @@
       "Save": "Salveaza",
       "AddSpeaker": "Adauga orator",
       "DeleteSpeaker": "Sterge orator"
-    }
+    }, 
+    "Congratulations": "Felicitari!"
   }, 
   "Conferences": {
     "Filters": {
       "StartDate": "Data incepere",
       "EndDate": "Data terminare"
     }, 
+    "QRCodeMessage": "Ai fost inscris cu succes la conferinta! Vei fi anuntat sa participi cu 5 minute inainte sa inceapa. Foloseste urmatorul cod pentru a avea access: {{code}}",
+    "SuccessfullyWithdrawn": "Te-ai retras din conferinta.",
     "Attend": "Participa",
     "Join": "Inscrie-te",
     "Withdraw": "Retrage-te",

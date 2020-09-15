@@ -65,13 +65,16 @@
       "Save": "Save",
       "AddSpeaker": "Add speaker",
       "DeleteSpeaker": "Delete speaker"
-    }
+    }, 
+    "Congratulations": "Congratulations!"
   }, 
   "Conferences": {
     "Filters": {
       "StartDate": "Start date",
       "EndDate": "End date"
     }, 
+    "QRCodeMessage": "You successfully attended to the conference! You will be notified to join 5 minutes before it starts. Use the following code to access the conference: {{code}}",
+    "SuccessfullyWithdrawn": "You have withdrawn from the conference.",
     "Attend": "Attend",
     "Join": "Join",
     "Withdraw": "Withdraw",

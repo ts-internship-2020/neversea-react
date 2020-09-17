@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import ConferenceFilters from './ConferenceFilters';
 import LoadingFakeText from 'components/common/fakeText/LoadingFakeText';
 import ConferenceList from './ConferenceList';
-//import { generateDefaultFilters } from 'utils/functions';
 import { useToast } from 'hooks/toasts';
 import { useQuery, useMutation } from '@apollo/client';
 import { CONFERENCE_LIST_QUERY } from '../queries/ConferenceListQuery';
@@ -14,6 +13,8 @@ import { useTranslation } from 'react-i18next';
 import { WITHDRAW_CONFERENCE_MUTATION } from '../mutations/WithdrawConference';
 import DialogDisplay from 'components/common/dialogBox/DialogDisplay';
 import ConferenceCodeModal from './ConferenceCodeModal';
+import ConferenceCountdownModal from './ConferenceCountdownModal';
+import { emptyString } from "utils/constants";
 
 
 
@@ -24,15 +25,18 @@ const defaultPager = {
 }
 
 const ConferenceListContainer = () => {
-    const addToast = useToast();
     const [email] = useEmail();
     const [filters, setFilters] = useState({});
     const [, setFooter] = useFooter();
     const [pager, setPager] = useState(defaultPager);
-    const [code, setCode] = useState("");
+    const [code, setCode] = useState(emptyString);
     const [open, setOpen] = useState(false);
+    const [countdownDialog, setCountdownDialog] = useState(false);
+    const [countdownMsg, setCountdownMsg] = useState(emptyString);
+    const [conferenceDate, setConferenceDate] = useState(new Date('2020-12-31'));
 
     const {t} = useTranslation();
+    const addToast = useToast();
 
 
     const {loading, data, refetch} = useQuery(CONFERENCE_LIST_QUERY, {
@@ -57,17 +61,31 @@ const ConferenceListContainer = () => {
 
     const [withdraw] = useMutation(WITHDRAW_CONFERENCE_MUTATION, {
         onCompleted: () => {
-            addToast(t("Conferences.SuccessfullyWithdrawn"), 'success')
+            addToast(t("Conferences.SuccessfullyWithdrawn"), 'success');
+            refetch()
         },
         onError: error => addToast(error, 'error', false)
-    })
+    });
+
+    const handleJoin = useCallback((conference) => () => {
+        setConferenceDate(conference.startDate);
+        if(conferenceDate<=new Date()) {
+            setCountdownMsg("Conferences.AlreadyHappened")
+        }
+        else {
+            setCountdownMsg("Conferences.WillHappen");
+        }
+        setCountdownDialog(true);
+        console.log(conference);
+    }, [conferenceDate]);
 
     const handleWithdraw = useCallback((conference) => () => {
         const input = {
             attendeeEmail: email,
             conferenceId: conference.id
         }
-        withdraw({ variables: { input } })
+        withdraw({ variables: { input } });
+        
     }, [withdraw, email]);
 
     
@@ -103,6 +121,11 @@ const ConferenceListContainer = () => {
         refetch() 
     }, [setOpen, setCode, refetch]);
 
+    const handleCloseCountdown = useCallback(() => {
+        setCountdownDialog(false); 
+        refetch() 
+    }, [setCountdownDialog, refetch]);
+
     useEffect(() => {
         if (data && pager.totalCount !== data?.conferenceList?.pagination?.totalCount) {
             setPager(currentPager => ({ ...currentPager, totalCount: data?.conferenceList?.pagination?.totalCount }));
@@ -136,13 +159,20 @@ const ConferenceListContainer = () => {
     }
     return <>
             <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters}/>
-            <ConferenceList onWithdraw={handleWithdraw} onAttend={handleAttend} conferences={data?.conferenceList?.values}/>
+            <ConferenceList onJoin={handleJoin} onWithdraw={handleWithdraw} onAttend={handleAttend} conferences={data?.conferenceList?.values}/>
             <DialogDisplay
                 id="showQRCode"
                 open={open}
                 title={t("General.Congratulations")}
                 onClose={handleCloseDialog}
                 content={<ConferenceCodeModal code={code}/>}/>
+            <DialogDisplay
+                id="showCountdown"
+                open={countdownDialog}
+                title={t(countdownMsg)}
+                //title={t("hardcodare")}
+                onClose={handleCloseCountdown}
+                content={<ConferenceCountdownModal conferenceDate={conferenceDate}/>}/>
         </>
 }
 

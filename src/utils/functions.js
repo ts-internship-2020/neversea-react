@@ -64,3 +64,19 @@ export const generateDefaultFilters = () => {
         endDate: today.add(2, "days").format("YYYY-MM-DD")
     }
 }
+
+export const calculateTimeLeft = (inputDate) => {
+    let timeLeft = {};
+
+    const difference = +inputDate - +new Date();
+
+    if (difference > 0) {
+        timeLeft = {
+          Days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          Hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          Minutes: Math.floor((difference / 1000 / 60) % 60),
+          Seconds: Math.floor((difference / 1000) % 60)
+        };
+    }
+    return timeLeft;
+}

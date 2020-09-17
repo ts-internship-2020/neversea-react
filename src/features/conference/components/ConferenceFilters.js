@@ -59,7 +59,7 @@ const ConferenceFilters = (props) => {
 }
 
 ConferenceFilters.propTypes = {
-    filters: PropTypes.shape({startDate:  PropTypes.any.isRequired, endDate: PropTypes.any.isRequired}).isRequired, 
+    filters: PropTypes.shape({startDate:  PropTypes.any, endDate: PropTypes.any}).isRequired, 
     onApplyFilters: PropTypes.func.isRequired
 }
 

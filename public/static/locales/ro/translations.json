@@ -22,7 +22,13 @@
   "DateTime": {
     "InvalidDateMessage": "Formatul datei este invalid",
     "MinDateMessage": "Data introdusa nu poate fi mai mica decat valoarea minima",
-    "MaxDateMessage": "Data introdusa nu poate fi mai mare decat valoarea maxima"
+    "MaxDateMessage": "Data introdusa nu poate fi mai mare decat valoarea maxima",
+    "Days": " zile ", 
+    "Months": " luni ", 
+    "Years": " ani ",
+    "Hours": " ore ",
+    "Minutes": " minute ",
+    "Seconds": " secunde "
   },
   "Validations": {
     "Cnp": "CNP-ul nu este valid",
@@ -66,6 +72,8 @@
       "StartDate": "Data incepere",
       "EndDate": "Data terminare"
     }, 
+    "AlreadyHappened": "Aceasta conferinta deja a avut loc. ",
+    "WillHappen": "Conferinta va incepe in: ",
     "QRCodeMessage": "Ai fost inscris cu succes la conferinta! Vei fi anuntat sa participi cu 5 minute inainte sa inceapa. Foloseste urmatorul cod pentru a avea access: {{code}}",
     "SuccessfullyWithdrawn": "Te-ai retras din conferinta.",
     "Attend": "Participa",

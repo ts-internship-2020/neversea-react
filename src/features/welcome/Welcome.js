@@ -3,10 +3,10 @@ import { Typography, Grid} from '@material-ui/core';
 import CustomIconButton from 'components/common/buttons/IconButton';
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 import CustomTextField from 'components/common/inputs/CustomTextField';
-import {useTranslation} from 'react-i18next';
-import {emptyString} from 'utils/constants';
-import {useEmail} from 'hooks/useEmail';
-import {validateEmail} from 'utils/functions';
+import { useTranslation } from 'react-i18next';
+import { emptyString } from 'utils/constants';
+import { useEmail } from 'hooks/useEmail';
+import { validateEmail } from 'utils/functions';
 
 function Welcome() {
     const {t} = useTranslation();

@@ -72,13 +72,20 @@
       "AddSpeaker": "Add speaker",
       "DeleteSpeaker": "Delete speaker"
     }, 
-    "Congratulations": "Congratulations!"
+    "Congratulations": "Congratulations!", 
+    "Online": "Online", 
+    "Offline": "Offline"
   }, 
+  "Error": {
+    "LoadingData": "There was an error loading data.", 
+    "Status": "Sorry, we couldn't update your status."
+  },
   "Conferences": {
     "Filters": {
       "StartDate": "Start date",
       "EndDate": "End date"
     }, 
+    "SuccessfullySaved": "Conference successfully saved", 
     "AlreadyHappened": "This conference has already taken place. ",
     "WillHappen": "The conference will start in: ",
     "QRCodeMessage": "You successfully attended to the conference! You will be notified to join 5 minutes before it starts. Use the following code to access the conference: {{code}}",

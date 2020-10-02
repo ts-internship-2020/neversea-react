@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-import HelloWorld from 'features/helloWorld/helloWorld';
+import Lobby from 'features/lobby/components/Lobby';
 import Welcome from 'features/welcome/Welcome';
 import NotFound from 'components/common/NotFound';
 import Forbidden from 'components/common/Forbidden';
@@ -27,7 +26,7 @@ export default function AppRoutes() {
             <Route exact path="/welcome" component={Welcome}/>
             <Route exact path="/conferences" component={ConferenceListContainer}/>
             <Route exact path="/myConferences" component={MyConferenceListContainer}/>
-            <Route exact path="/helloWorld" component={HelloWorld} />
+            <Route exact path="/lobby" component={Lobby}/>
             <Route exact path="/myConferences/:id(new)" component={MyConferenceContainer}/>
             <Route exact path="/myConferences/:id(\d+)" component={MyConferenceContainer}/>
             <Redirect exact from="/" to="/welcome" />

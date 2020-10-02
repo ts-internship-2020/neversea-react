@@ -65,13 +65,20 @@
       "AddSpeaker": "Adauga orator",
       "DeleteSpeaker": "Sterge orator"
     }, 
-    "Congratulations": "Felicitari!"
+    "Congratulations": "Felicitari!",
+    "Online": "Activi", 
+    "Offline": "Inactivi"
   }, 
+  "Error": {
+    "LoadingData": "Datele nu au putut fi incarcate.", 
+    "Status": "Ne pare rau, statusul tau nu a putut fi actualizat."
+  },
   "Conferences": {
     "Filters": {
       "StartDate": "Data incepere",
       "EndDate": "Data terminare"
     }, 
+    "SuccessfullySaved": "Conferinta salvata cu succes", 
     "AlreadyHappened": "Aceasta conferinta deja a avut loc. ",
     "WillHappen": "Conferinta va incepe in: ",
     "QRCodeMessage": "Ai fost inscris cu succes la conferinta! Vei fi anuntat sa participi cu 5 minute inainte sa inceapa. Foloseste urmatorul cod pentru a avea access: {{code}}",
